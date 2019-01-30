@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
 import { addNewNote } from '../redux/actions'
 import propTypes from 'prop-types'
 
@@ -41,9 +40,11 @@ Add.propTypes = {
 	addNewNote: propTypes.func.isRequired
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-	addNewNote
-}, dispatch)
+const mapDispatchToProps = dispatch => ({
+	addNewNote: (text) => {
+		dispatch(addNewNote(text))
+	}
+})
 
 export default connect(
 	null,
