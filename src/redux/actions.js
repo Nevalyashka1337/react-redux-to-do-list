@@ -1,7 +1,8 @@
 export const addNewNote = (text) => {
 	return {
 		type: 'ADD_NOTE',
-		payload: { 
+		payload: {
+			id: new Date().getTime(),
 			completed: false,
 			text
 		}

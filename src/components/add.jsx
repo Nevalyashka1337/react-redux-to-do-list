@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { addNewNote } from '../redux/actions'
 import propTypes from 'prop-types'
 
-class Add extends React.Component {
+class Add extends Component {
 	state = {
 		text: ''
 	}

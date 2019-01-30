@@ -1,26 +1,38 @@
 import React from 'react'
+import propTypes from 'prop-types'
+import { connect } from 'react-redux'
+import Note from './Note'
 
-function list() {
+function ListOfNotes(props) {
+	const getBody = () => {
+		return props.notes.length > 0 ? (
+			props.notes.reverse().map((note) => 
+				<Note text={note.text} isCompleted={note.completed}  key={note.id}/>
+			)
+		) : (
+			<div className="text-center border rounded">
+				<p className="mt-3">notes not found</p>
+			</div>
+		)
+	}
 	
 	return (
 		<div className="row mt-1">
 			<div className="col">
-			
-				<div className="row mt-1">
-					<div className="col d-flex justify-content-between align-items-stretch">
-						<div>
-							<button className="btn btn-do btn-success"><ion-icon name="checkmark"></ion-icon></button>
-						</div>
-						<div className="border-top border-bottom p-1 px-3 flex-grow-1">Lorem ipsum dolor sit amet.</div>
-						<div>
-							<button className="btn btn-danger btn-del"><ion-icon name="trash"></ion-icon></button>
-						</div>
-					</div>
-				</div>
-
+				{getBody()}
 			</div>
 		</div>
 	)
 }
 
-export default list
+ListOfNotes.propTypes = {
+	notes: propTypes.array.isRequired
+}
+
+const mapStateToProps = state => ({
+	notes: state.notes
+})
+
+export default connect(
+	mapStateToProps
+)(ListOfNotes)
