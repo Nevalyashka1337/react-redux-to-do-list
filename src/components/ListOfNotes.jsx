@@ -9,11 +9,16 @@ function ListOfNotes(props) {
 		props.handleCompleted(id)
 	}
 
+	const onDeleteNote = (id) => {
+		props.deleteNote(id)
+	}
+
 	const getBody = () => {
 		return props.notes.length > 0 ? (
 			props.notes.map((note) => 
 				<Note text={note.text} isCompleted={note.completed}
 				key={note.id} handleCompleted={onHandleCompleted}
+				deleteNote={onDeleteNote}
 				id={note.id}/>
 			)
 		) : (
@@ -34,7 +39,8 @@ function ListOfNotes(props) {
 
 ListOfNotes.propTypes = {
 	notes: propTypes.array.isRequired,
-	handleCompleted: propTypes.func.isRequired
+	handleCompleted: propTypes.func.isRequired,
+	deleteNote: propTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -44,6 +50,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	handleCompleted: (id) => {
 		dispatch({ type: 'HANDLE_COMPLETED', payload: id })
+	},
+	deleteNote: (id) => {
+		dispatch({ type: 'DELETE_NOTE', payload: id })
 	}
 });
 

@@ -6,6 +6,15 @@ const reducer = (state = initState, action) => {
 	switch (action.type) {
 		case 'ADD_NOTE':
 			return { ...state, notes: [ ...state.notes, action.payload ] }
+		case 'DELETE_NOTE':
+			return {
+				...state,
+				notes: [
+					...state.notes.filter(note => {
+						return note.id !== action.payload
+					})
+				]
+			}
 		case 'HANDLE_COMPLETED':
 			return {
 				...state,
