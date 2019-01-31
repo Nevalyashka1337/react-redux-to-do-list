@@ -3,7 +3,8 @@ const initState = {
 		{id: 0, completed: false, text: 'Lorem ipsum amet consectetur adipisicing elit. Culpa magni quisquam, laboriosam blanditiis quod doloremque aliquid nulla. Dolorum, aut pariatur'},
 		{id: 1, completed: true, text: 'Dolor sit  consectetur  elit. Culpa magni quisquam, laboriosam blanditiis quod doloremque aliquid nulla. Dolorum, aut pariatur'},
 		{id: 2, completed: false, text: 'Iipsum dolor  adipisicing elit. Culpa magni quisquam, laboriosam blanditiis quod doloremque aliquid nulla. Dolorum, aut pariatur'}
-	]
+	],
+	mainFilter: 'all'
 }
 
 const reducer = (state = initState, action) => {
@@ -18,6 +19,11 @@ const reducer = (state = initState, action) => {
 						return note.id !== action.payload
 					})
 				]
+			}
+		case 'CHANGE_MAIN_FILTER':
+			return {
+				...state,
+				mainFilter: action.payload
 			}
 		case 'HANDLE_COMPLETED':
 			return {

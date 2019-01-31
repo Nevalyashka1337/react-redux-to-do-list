@@ -4,6 +4,7 @@ import './App.css'
 import Add from './components/Add'
 import List from './components/ListOfNotes'
 import Progress from './components/Progress'
+import Filter from './components/Filter'
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
           <div className="col-xl-6 col-lg-7 col-md-8">
 
             <Add />
+            <Filter />
             <Progress />
             <List />
 
