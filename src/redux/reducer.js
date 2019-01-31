@@ -1,5 +1,9 @@
 const initState = {
-	notes: []
+	notes: [
+		{id: 0, completed: false, text: 'Lorem ipsum amet consectetur adipisicing elit. Culpa magni quisquam, laboriosam blanditiis quod doloremque aliquid nulla. Dolorum, aut pariatur'},
+		{id: 1, completed: true, text: 'Dolor sit  consectetur  elit. Culpa magni quisquam, laboriosam blanditiis quod doloremque aliquid nulla. Dolorum, aut pariatur'},
+		{id: 2, completed: false, text: 'Iipsum dolor  adipisicing elit. Culpa magni quisquam, laboriosam blanditiis quod doloremque aliquid nulla. Dolorum, aut pariatur'}
+	]
 }
 
 const reducer = (state = initState, action) => {
