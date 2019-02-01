@@ -7,7 +7,7 @@ function Note({ text, isCompleted, handleCompleted, id, deleteNote }) {
 	if ( isCompleted ) {
 		btnClass += 'btn-success'
 	} else {
-		btnClass += 'btn-outline-success'
+		btnClass += 'btn-outline-warning'
 	}
 
 

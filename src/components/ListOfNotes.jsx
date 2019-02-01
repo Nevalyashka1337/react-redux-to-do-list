@@ -3,19 +3,22 @@ import propTypes from 'prop-types'
 import { connect } from 'react-redux'
 import Note from './Note'
 
-function ListOfNotes(props) {
+function ListOfNotes({ notes, mainFilter, handleCompleted, deleteNote }) {
+	
+	const currentNotes = ( mainFilter === 'active' ) ? notes.filter(note => !note.completed) :
+		( mainFilter === 'completed' ) ? notes.filter(note => note.completed) : notes
 
 	const onHandleCompleted = (id) => {
-		props.handleCompleted(id)
+		handleCompleted(id)
 	}
 
 	const onDeleteNote = (id) => {
-		props.deleteNote(id)
+		deleteNote(id)
 	}
 
 	const getBody = () => {
-		return props.notes.length > 0 ? (
-			props.notes.map((note) => 
+		return currentNotes.length > 0 ? (
+			currentNotes.map((note) => 
 				<Note text={note.text} isCompleted={note.completed}
 				key={note.id} handleCompleted={onHandleCompleted}
 				deleteNote={onDeleteNote}
@@ -39,12 +42,14 @@ function ListOfNotes(props) {
 
 ListOfNotes.propTypes = {
 	notes: propTypes.array.isRequired,
+	mainFilter: propTypes.string.isRequired,
 	handleCompleted: propTypes.func.isRequired,
 	deleteNote: propTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-	notes: state.notes
+	notes: state.notes,
+	mainFilter: state.mainFilter
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -2,8 +2,6 @@ import React from 'react'
 import propTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-
-
 function Filter(props) {
 	let allTabClasses = 'btn btn-outline-primary'
 	let activeTabClasses = 'btn btn-outline-warning'
@@ -16,7 +14,7 @@ function Filter(props) {
 		case 'active':
 		activeTabClasses += ' active';
 			break;
-		case 'complated':
+		case 'completed':
 		completedTabClasses += ' active';
 			break;
 		default:
@@ -35,7 +33,7 @@ function Filter(props) {
 				<div className="btn-group w-100" role="group" aria-label="Basic example">
 					<button type="button" onClick={onChangeFilter} name="all" className={allTabClasses}>All</button>
 					<button type="button" onClick={onChangeFilter} name="active" className={activeTabClasses}>Active</button>
-					<button type="button" onClick={onChangeFilter} name="complated" className={completedTabClasses}>Completed</button>
+					<button type="button" onClick={onChangeFilter} name="completed" className={completedTabClasses}>Completed</button>
 				</div>
 			</div>
 		</div>
