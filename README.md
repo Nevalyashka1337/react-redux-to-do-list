@@ -1,2 +1,2 @@
 # React Redux To Do List
-!['to do list'](https://media.giphy.com/media/g4OwCFPUPQWQxV1WON/giphy.gif)
+![](https://i.imgur.com/JBlKC5k.png)
