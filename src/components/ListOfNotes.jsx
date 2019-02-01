@@ -10,7 +10,6 @@ function ListOfNotes({ notes, mainFilter, handleCompleted, deleteNote }) {
 	
 	currentNotes.sort((note1, note2) => note1.id > note2.id ? -1 : 1 )
 
-	console.log(currentNotes)
 	const getBody = () => {
 		return currentNotes.length > 0 ? (
 			currentNotes.map(note => 
