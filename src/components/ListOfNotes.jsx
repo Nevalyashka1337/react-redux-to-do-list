@@ -5,9 +5,12 @@ import Note from './Note'
 
 function ListOfNotes({ notes, mainFilter, handleCompleted, deleteNote }) {
 	
-	const currentNotes = ( mainFilter === 'active' ) ? notes.filter(note => !note.completed) :
+	let currentNotes = ( mainFilter === 'active' ) ? notes.filter(note => !note.completed) :
 		( mainFilter === 'completed' ) ? notes.filter(note => note.completed) : notes;
+	
+	currentNotes.sort((note1, note2) => note1.id > note2.id ? -1 : 1 )
 
+	console.log(currentNotes)
 	const getBody = () => {
 		return currentNotes.length > 0 ? (
 			currentNotes.map(note => 
