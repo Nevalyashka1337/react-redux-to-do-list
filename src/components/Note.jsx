@@ -4,12 +4,7 @@ import propTypes from 'prop-types'
 
 function Note({ text, isCompleted, handleCompleted, id, deleteNote }) {
 	let btnClass = 'btn btn-do ';
-	if ( isCompleted ) {
-		btnClass += 'btn-success'
-	} else {
-		btnClass += 'btn-outline-warning'
-	}
-
+	btnClass += isCompleted ? 'btn-success' : 'btn-outline-warning'
 
 	return (
 		<div className="row mt-1">

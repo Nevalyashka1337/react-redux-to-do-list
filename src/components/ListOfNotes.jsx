@@ -6,22 +6,14 @@ import Note from './Note'
 function ListOfNotes({ notes, mainFilter, handleCompleted, deleteNote }) {
 	
 	const currentNotes = ( mainFilter === 'active' ) ? notes.filter(note => !note.completed) :
-		( mainFilter === 'completed' ) ? notes.filter(note => note.completed) : notes
-
-	const onHandleCompleted = (id) => {
-		handleCompleted(id)
-	}
-
-	const onDeleteNote = (id) => {
-		deleteNote(id)
-	}
+		( mainFilter === 'completed' ) ? notes.filter(note => note.completed) : notes;
 
 	const getBody = () => {
 		return currentNotes.length > 0 ? (
-			currentNotes.map((note) => 
+			currentNotes.map(note => 
 				<Note text={note.text} isCompleted={note.completed}
-				key={note.id} handleCompleted={onHandleCompleted}
-				deleteNote={onDeleteNote}
+				key={note.id} handleCompleted={handleCompleted}
+				deleteNote={deleteNote}
 				id={note.id}/>
 			)
 		) : (

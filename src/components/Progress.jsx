@@ -2,12 +2,13 @@ import React from 'react'
 import propTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-function Progress(props) {
+function Progress({ notes }) {
 	
-	let allNotes = props.notes.length;
-	let completedNotes = props.notes.filter(note => note.completed ? note : null )
+	const completedNotes = notes.reduce((sum, note) => {
+		return note.completed ? sum + 1 : sum
+	}, 0)
 	
-	let progress = Math.round(completedNotes.length * 100 / allNotes);
+	let progress = Math.round(completedNotes * 100 / notes.length);
 	if ( isNaN(progress) ) progress = 0
 
 	return (

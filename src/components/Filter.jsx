@@ -2,29 +2,17 @@ import React from 'react'
 import propTypes from 'prop-types'
 import { connect } from 'react-redux'
 
-function Filter(props) {
+function Filter({ mainFilter, changeFilter }) {
 	let allTabClasses = 'btn btn-outline-primary'
 	let activeTabClasses = 'btn btn-outline-warning'
 	let completedTabClasses = 'btn btn-outline-success'
-	
-	switch (props.mainFilter) {
-		case 'all':
-			allTabClasses += ' active';
-			break;
-		case 'active':
-		activeTabClasses += ' active';
-			break;
-		case 'completed':
-		completedTabClasses += ' active';
-			break;
-		default:
-			allTabClasses += ' active';
-	}
 
-	const onChangeFilter = (e) => {
-		if ( e.target.name !== props.mainFilter ) {
-			props.changeFilter(e.target.name)
-		}
+	allTabClasses += mainFilter === 'all' ? ' active' : ''
+	activeTabClasses += mainFilter === 'active' ? ' active' : ''
+	completedTabClasses += mainFilter === 'completed' ? ' active' : ''
+	
+	const onChangeFilter = ({ target }) => {
+		if ( target.name !== mainFilter ) changeFilter(target.name)
 	}
 
 	return (
@@ -51,7 +39,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	changeFilter: (filter) => {
-		dispatch({ type: 'CHANGE_MAIN_FILTER', payload: filter })
+		dispatch({ type: 'HANDLE_MAIN_FILTER', payload: filter })
 	}
 })
 

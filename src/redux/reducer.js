@@ -20,18 +20,14 @@ const reducer = (state = initState, action) => {
 					})
 				]
 			}
-		case 'CHANGE_MAIN_FILTER':
-			return {
-				...state,
-				mainFilter: action.payload
-			}
+		case 'HANDLE_MAIN_FILTER':
+			return { ...state, mainFilter: action.payload }
 		case 'HANDLE_COMPLETED':
 			return {
 				...state,
 				notes: [
 					...state.notes.map(note => {
-						if ( note.id !== action.payload ) return note
-						else return { ...note, completed: !note.completed }
+						return note.id === action.payload ? { ...note, completed: !note.completed } : note
 					})
 				]
 			}

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addNewNote } from '../redux/actions'
 import propTypes from 'prop-types'
 
 class Add extends Component {
@@ -8,8 +7,8 @@ class Add extends Component {
 		text: ''
 	}
 
-	addNote = (e) => {
-		if ( e.key === 'Enter' ) {
+	addNote = ({ key }) => {
+		if ( key === 'Enter' ) {
 			const { text } = this.state;
 			if ( text.length > 0 ) {
 				this.props.addNewNote(text)
@@ -42,7 +41,12 @@ Add.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
 	addNewNote: (text) => {
-		dispatch(addNewNote(text))
+		dispatch({ type: 'ADD_NOTE', payload: {
+				id: new Date().getTime(),
+				completed: false,
+				text
+			}
+		})
 	}
 })
 
