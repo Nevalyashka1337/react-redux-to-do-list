@@ -1,16 +1,14 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import classNames from 'classnames'
 
 
 function Note({ text, isCompleted, handleCompleted, id, deleteNote }) {
-	let btnClass = 'btn btn-do ';
-	btnClass += isCompleted ? 'btn-success' : 'btn-outline-warning'
-
 	return (
 		<div className="row mt-1">
 			<div className="col d-flex justify-content-between align-items-stretch">
 				<div>
-					<button onClick={() => handleCompleted(id)} className={btnClass}><ion-icon name="checkmark"></ion-icon></button>
+					<button onClick={() => handleCompleted(id)} className={classNames('btn btn-do', { 'btn-success': isCompleted, 'btn-outline-warning': !isCompleted})}><ion-icon name="checkmark"></ion-icon></button>
 				</div>
 				<div className="border-top border-bottom p-1 px-3 flex-grow-1">{text}</div>
 				<div>

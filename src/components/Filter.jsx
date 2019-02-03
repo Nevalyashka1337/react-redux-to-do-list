@@ -1,15 +1,9 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import { connect } from 'react-redux'
+import classNames from 'classnames'
 
 function Filter({ mainFilter, changeFilter }) {
-	let allTabClasses = 'btn btn-outline-primary'
-	let activeTabClasses = 'btn btn-outline-warning'
-	let completedTabClasses = 'btn btn-outline-success'
-
-	allTabClasses += mainFilter === 'all' ? ' active' : ''
-	activeTabClasses += mainFilter === 'active' ? ' active' : ''
-	completedTabClasses += mainFilter === 'completed' ? ' active' : ''
 	
 	const onChangeFilter = ({ target }) => {
 		if ( target.name !== mainFilter ) changeFilter(target.name)
@@ -19,9 +13,12 @@ function Filter({ mainFilter, changeFilter }) {
 		<div className="row mt-1">
 			<div className="col">
 				<div className="btn-group w-100" role="group" aria-label="Basic example">
-					<button type="button" onClick={onChangeFilter} name="all" className={allTabClasses}>All</button>
-					<button type="button" onClick={onChangeFilter} name="active" className={activeTabClasses}>Active</button>
-					<button type="button" onClick={onChangeFilter} name="completed" className={completedTabClasses}>Completed</button>
+					<button type="button" onClick={onChangeFilter}name="all"
+					className={classNames('btn btn-outline-primary', { active: mainFilter === 'all' })}>All</button>
+					<button type="button" onClick={onChangeFilter} name="active"
+					className={classNames('btn btn-outline-warning', { active: mainFilter === 'active' })}>Active</button>
+					<button type="button" onClick={onChangeFilter} name="completed"
+					className={classNames('btn btn-outline-success', { active: mainFilter === 'completed' })}>Completed</button>
 				</div>
 			</div>
 		</div>
