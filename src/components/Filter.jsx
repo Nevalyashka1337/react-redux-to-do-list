@@ -1,6 +1,5 @@
 import React from 'react'
 import propTypes from 'prop-types'
-import { connect } from 'react-redux'
 import classNames from 'classnames'
 
 function Filter({ mainFilter, changeFilter }) {
@@ -30,17 +29,4 @@ Filter.propTypes = {
 	changeFilter: propTypes.func.isRequired
 }
 
-const mapStateToProps = state => ({
-	mainFilter: state.mainFilter
-});
-
-const mapDispatchToProps = dispatch => ({
-	changeFilter: (filter) => {
-		dispatch({ type: 'HANDLE_MAIN_FILTER', payload: filter })
-	}
-})
-
-export default connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(Filter)
+export default Filter
