@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import propTypes from 'prop-types'
 
 class Add extends Component {
@@ -38,4 +39,15 @@ Add.propTypes = {
 	addNewNote: propTypes.func.isRequired
 }
 
-export default Add
+const mapDispatchToProps = dispatch => ({
+	addNewNote: text => {
+		dispatch({ type: 'ADD_NOTE', payload: {
+				id: new Date().getTime(),
+				completed: false,
+				text
+			}
+		})
+	}
+})
+
+export default connect(null, mapDispatchToProps)(Add)

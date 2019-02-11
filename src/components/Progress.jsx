@@ -1,5 +1,6 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import { connect } from 'react-redux'
 
 function Progress({ notes }) {
 	
@@ -25,4 +26,8 @@ Progress.propTypes = {
 	notes: propTypes.array.isRequired
 }
 
-export default Progress
+const mapStateToProps = state => ({
+	notes: state.notes
+})
+
+export default connect(mapStateToProps)(Progress)

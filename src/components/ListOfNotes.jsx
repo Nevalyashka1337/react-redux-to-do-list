@@ -1,5 +1,6 @@
 import React from 'react'
 import propTypes from 'prop-types'
+import { connect } from 'react-redux'
 import Note from './Note'
 
 function ListOfNotes({ notes, mainFilter, handleCompleted, deleteNote }) {
@@ -40,4 +41,21 @@ ListOfNotes.propTypes = {
 	deleteNote: propTypes.func.isRequired
 }
 
-export default ListOfNotes
+const mapStateToProps = state => ({
+	notes: state.notes,
+	mainFilter: state.mainFilter
+});
+
+const mapDispatchToProps = dispatch => ({
+	handleCompleted: id => {
+		dispatch({ type: 'HANDLE_COMPLETED', payload: id })
+	},
+	deleteNote: id => {
+		dispatch({ type: 'DELETE_NOTE', payload: id })
+	}
+})
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(ListOfNotes)
