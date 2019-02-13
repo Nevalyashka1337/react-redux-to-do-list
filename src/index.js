@@ -3,12 +3,25 @@ import ReactDOM from 'react-dom';
 import App from './components/App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
-import { store } from './redux/store'
+import { configStore } from './redux/store'
 
-ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>
-, document.getElementById('root'));
+const store = configStore()
 
-serviceWorker.register();
+const Render = Component => {
+	ReactDOM.render(
+		<Provider store={store}>
+			<Component />
+		</Provider>
+	, document.getElementById('root'))
+}
+
+Render(App)
+
+if (module.hot) {
+	module.hot.accept('./components/App', () => {
+		const NextApp = require('./components/App').default
+		Render(NextApp)
+	})
+}
+
+serviceWorker.unregister();

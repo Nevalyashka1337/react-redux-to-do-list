@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../style/App.css'
+import '../style/App.scss'
 
 import Add from './Add'
 import Filter from './Filter'
