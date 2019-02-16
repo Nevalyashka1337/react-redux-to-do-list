@@ -2,6 +2,8 @@ import React from 'react'
 import propTypes from 'prop-types'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
+import { changeFilterAction } from '../redux/actions'
+import { mainFilter } from '../redux/selectors'
 
 function Filter({ mainFilter, changeFilter }) {
 	
@@ -31,12 +33,12 @@ Filter.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	mainFilter: state.mainFilter
+	mainFilter: mainFilter(state)
 });
 
 const mapDispatchToProps = dispatch => ({
 	changeFilter: filter => {
-		dispatch({ type: 'HANDLE_MAIN_FILTER', payload: filter })
+		dispatch(changeFilterAction(filter))
 	}
 })
 

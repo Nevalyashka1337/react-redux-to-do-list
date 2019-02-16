@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import propTypes from 'prop-types'
+import { addNewNoteAction } from '../redux/actions'
 
 class Add extends Component {
 	state = {
@@ -41,12 +42,7 @@ Add.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
 	addNewNote: text => {
-		dispatch({ type: 'ADD_NOTE', payload: {
-				id: new Date().getTime(),
-				completed: false,
-				text
-			}
-		})
+		dispatch(addNewNoteAction(text))
 	}
 })
 

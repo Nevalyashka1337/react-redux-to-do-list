@@ -1,6 +1,7 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import { connect } from 'react-redux'
+import { notes } from '../redux/selectors'
 
 function Progress({ notes }) {
 	
@@ -27,7 +28,7 @@ Progress.propTypes = {
 }
 
 const mapStateToProps = state => ({
-	notes: state.notes
+	notes: notes(state)
 })
 
 export default connect(mapStateToProps)(Progress)
