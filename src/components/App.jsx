@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../style/App.scss'
 
-import Add from './Add'
-import Filter from './Filter'
-import Progress from './Progress'
-import ListOfNotes from './ListOfNotes'
+import Add from '../containers/Add'
+import Filter from '../containers/Filter'
+import Progress from '../containers/Progress'
+import ListOfNotes from '../containers/ListOfNotes'
 
 class App extends Component {
 
