@@ -2,8 +2,8 @@ import React from 'react'
 import propTypes from 'prop-types'
 import classNames from 'classnames'
 import { connect } from 'react-redux'
-import { changeFilterAction } from '../redux/actions'
-import { mainFilter } from '../redux/selectors'
+import { changeFilterAction } from 'Redux/actions'
+import { mainFilter } from 'Redux/selectors'
 
 function Filter({ mainFilter, changeFilter }) {
 	

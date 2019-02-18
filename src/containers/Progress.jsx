@@ -1,7 +1,7 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { notes } from '../redux/selectors'
+import { notes } from 'Redux/selectors'
 
 function Progress({ notes }) {
 	
