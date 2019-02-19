@@ -1,3 +1,10 @@
+import { 
+	ADD_NOTE,
+	HANDLE_COMPLETED,
+	HANDLE_MAIN_FILTER,
+ DELETE_NOTE
+ } from './actionTypes'
+
 const initState = {
 	notes: [],
 	mainFilter: 'all'
@@ -5,9 +12,9 @@ const initState = {
 
 const reducer = (state = initState, action) => {
 	switch (action.type) {
-		case 'ADD_NOTE':
+		case ADD_NOTE:
 			return { ...state, notes: [ ...state.notes, action.payload ] }
-		case 'DELETE_NOTE':
+		case DELETE_NOTE:
 			return {
 				...state,
 				notes: [
@@ -16,9 +23,9 @@ const reducer = (state = initState, action) => {
 					})
 				]
 			}
-		case 'HANDLE_MAIN_FILTER':
+		case HANDLE_MAIN_FILTER:
 			return { ...state, mainFilter: action.payload }
-		case 'HANDLE_COMPLETED':
+		case HANDLE_COMPLETED:
 			return {
 				...state,
 				notes: [
@@ -28,7 +35,7 @@ const reducer = (state = initState, action) => {
 				]
 			}
 		default:
-			return { ...state }
+			return state
 	}
 }
 

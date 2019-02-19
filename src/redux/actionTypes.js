@@ -1,0 +1,4 @@
+export const ADD_NOTE = 'ADD_NOTE'
+export const HANDLE_MAIN_FILTER = 'HANDLE_MAIN_FILTER'
+export const HANDLE_COMPLETED = 'HANDLE_COMPLETED'
+export const DELETE_NOTE = 'DELETE_NOTE'
