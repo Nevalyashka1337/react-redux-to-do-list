@@ -5,7 +5,7 @@ import {
  DELETE_NOTE
  } from './actionTypes'
 
-const initState = {
+export const initState = {
 	notes: [],
 	mainFilter: 'all'
 }
