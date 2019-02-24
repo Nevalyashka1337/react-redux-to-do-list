@@ -1,9 +1,9 @@
 import React from 'react'
 import propTypes from 'prop-types'
 import { connect } from 'react-redux'
-import Note from 'Components/Note'
-import { handleCompletedAction, deleteNoteAction } from 'Redux/actions'
-import { mainFilter, notes } from 'Redux/selectors'
+import Note from '../components/Note'
+import { handleCompletedAction, deleteNoteAction } from '../redux/actions'
+import { mainFilter, notes } from '../redux/selectors'
 
 function ListOfNotes({ notes, mainFilter, handleCompleted, deleteNote }) {
 	

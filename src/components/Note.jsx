@@ -2,7 +2,6 @@ import React from 'react'
 import propTypes from 'prop-types'
 import classNames from 'classnames'
 
-
 function Note({ text, isCompleted, handleCompleted, id, deleteNote }) {
 	return (
 		<div className="row mt-1">
