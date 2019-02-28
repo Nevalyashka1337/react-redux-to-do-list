@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import propTypes from 'prop-types'
 import { addNewNoteAction } from '../redux/actions'
 
-class Add extends Component {
+export class Add extends Component {
 	state = {
 		text: ''
 	}
